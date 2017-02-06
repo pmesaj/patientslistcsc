@@ -1,0 +1,29 @@
+<div class="row" *ngIf="patients?.length > 0">
+  <div class="col-sm-12">
+    <div class="panel panel-primary">
+		  <div class="panel-heading">
+			  <h3 class="panel-title">Patients</h3>
+			</div>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Patient number</th>
+            <th>Gender</th>
+            <th>Birthdate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients" (click)="onSelect(patient)" role="button">
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.lastName}}</td>
+            <td>{{patient.patientNumber}}</td>
+            <td>{{patient.gender}}</td>
+            <td>{{patient.birthdate | date:"MM-dd-yy" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
