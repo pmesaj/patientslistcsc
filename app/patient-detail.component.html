@@ -1,10 +1,10 @@
 <div class="container">
   <div *ngIf="patient">
     <div class="row">
-      <div class="col-sm-1">
+      <div class="col-sm-2">
         <img src="/public/images/user_placeholder.png" class="img-rounded img-user-pad" width="80px" alt="{{patient.firstName}} {{patient.lastName}}">
       </div>
-      <div class="col-sm-11">
+      <div class="col-sm-10">
         <h2><span class="label label-primary">{{patient.firstName }} {{patient.lastName | uppercase}} (ID: {{patient.patientNumber}})</span></h2>
         <h4><span class="label label-primary">Gender: {{patient.gender}}</span></h4>
         <h4><span class="label label-primary">Birthdate: {{patient.birthdate | date:"MM-dd-yy"}}</span></h4>
