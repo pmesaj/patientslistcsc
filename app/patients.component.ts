@@ -22,7 +22,9 @@ export class PatientsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private patientService: PatientService) { }
+    private patientService: PatientService) {
+      this.selectedPatient = {  id: 0,  firstName: '',  lastName: '',  patientNumber: 0,  gender: '',  birthdate: new Date, instituteId: 0,  departmentId:0};
+     }
   
   /**
    * Gets patients from an institute and a department
@@ -40,6 +42,27 @@ export class PatientsComponent implements OnInit {
   onSelect(patient: Patient): void {
     this.selectedPatient = patient;
     this.router.navigate(['/detail', this.selectedPatient.id]);
+  }
+
+  selectPatient(patient: Patient): void {
+    this.selectedPatient = patient;
+  }
+
+  savePatient(firstName:string, lastName:string, patientNumber:number, gender:string, birthdate: Date){
+    this.selectedPatient.firstName = firstName;
+    this.selectedPatient.lastName = lastName;
+    this.selectedPatient.patientNumber = patientNumber;
+    this.selectedPatient.gender = gender;
+    this.selectedPatient.birthdate = birthdate;
+    this.patientService.update(this.selectedPatient);
+  }
+
+  delete(patient: Patient): void {
+  this.patientService
+      .delete(patient.id)
+      .then(() => {
+        this.patients = this.patients.filter(p => p !== patient);
+      });
   }
 
 }

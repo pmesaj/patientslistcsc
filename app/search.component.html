@@ -1,16 +1,22 @@
 <h1>Search Patients</h1>
 <div class="row well">
   <div class="col-sm-4"> 
-    <select [(ngModel)]="selectedInstitute.id" (change)="onSelectInstitute($event)" class="form-control">
-      <option value="0">-- Select an Institute --</option>
-      <option *ngFor="let institute of institutes" value= {{institute.id}}>{{institute.name}} - {{institute.code}}</option>
-    </select>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-home"></i></span>
+      <select [(ngModel)]="selectedInstitute.id" (change)="onSelectInstitute($event)" class="form-control">
+        <option value="0">-- Select an Institute --</option>
+        <option *ngFor="let institute of institutes" value= {{institute.id}}>{{institute.name}} - {{institute.code}}</option>
+      </select>
+    </div>
   </div>
   <div class="col-sm-4">
-    <select [(ngModel)]="selectedDepartment.id" [disabled]="selectedInstitute.id == 0" class="form-control">
-      <option value="0">-- Select a Department --</option>
-      <option *ngFor="let department of departments" value= {{department.id}}>{{department.name}} - {{department.code}}</option>
-    </select>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-folder-close"></i></span>
+      <select [(ngModel)]="selectedDepartment.id" [disabled]="selectedInstitute.id == 0" class="form-control">
+        <option value="0">-- Select a Department --</option>
+        <option *ngFor="let department of departments" value= {{department.id}}>{{department.name}} - {{department.code}}</option>
+      </select>
+    </div>
   </div>
   <div class="col-sm-4">
     <button type="button" [disabled]="selectedDepartment.id == 0" class="btn btn-primary btn-block" (click)="list.getPatients()">Search</button>
